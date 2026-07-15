@@ -4,8 +4,6 @@ services:
 
     build: .
 
-    container_name: excel-automation-tool
-
     environment:
       PYTHONPATH: /app
 

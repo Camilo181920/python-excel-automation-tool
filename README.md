@@ -2,120 +2,188 @@
 
 ![Project Overview](screenshots/project_overview.png)
 
-A professional Python automation solution designed to process Excel files, validate business data, generate reports, and create automated summaries.
+A professional Python automation solution that processes Excel files, validates business data, removes errors, and generates structured reports with automated summaries and visualizations.
 
-This project demonstrates how repetitive spreadsheet workflows can be transformed into reliable automation processes that reduce manual work, improve accuracy, and save business time.
+This project demonstrates how repetitive spreadsheet workflows can be transformed into reliable automation processes that reduce manual work, improve data accuracy, and save business time.
 
 ---
 
-## Overview
+# Overview
 
 Many businesses spend hours every week manually cleaning spreadsheets, validating information, and preparing reports.
 
 This tool automates that workflow by:
 
-- Reading Excel files automatically.
-- Validating business data.
-- Removing invalid records.
-- Processing and transforming information.
-- Generating professional Excel reports.
-- Creating business summaries and charts.
+* Reading Excel files automatically.
+* Validating business data.
+* Removing invalid records.
+* Processing and transforming information.
+* Calculating business metrics.
+* Generating professional Excel reports.
+* Creating dashboards and charts.
 
 ---
 
-## Features
+# Problem
 
-### Excel Data Processing
+Manual spreadsheet processing can lead to:
 
-- Import Excel files automatically.
-- Validate required columns.
-- Detect missing information.
-- Remove invalid records.
-- Calculate derived values.
+* Time-consuming repetitive tasks.
+* Human errors during data cleaning.
+* Inconsistent reports.
+* Difficulties maintaining recurring workflows.
 
-### Data Validation
+---
+
+# Solution
+
+This automation tool provides a reusable workflow that transforms raw Excel files into clean, validated, and business-ready reports.
+
+The system automatically:
+
+1. Reads input Excel files.
+2. Validates required fields.
+3. Removes invalid records.
+4. Calculates derived values.
+5. Generates formatted Excel reports.
+6. Creates summary dashboards.
+
+---
+
+# Features
+
+## Excel Data Processing
+
+* Import Excel files automatically.
+* Validate spreadsheet structure.
+* Detect missing information.
+* Remove invalid records.
+* Calculate transaction totals.
+* Process business datasets.
+
+---
+
+## Data Validation
 
 The system validates:
 
-- Missing products.
-- Empty quantities.
-- Invalid prices.
-- Negative values.
-- Required spreadsheet structure.
-
-### Automated Reports
-
-The generated Excel report includes:
-
-### Processed Data Sheet
-
-Contains:
-
-- Cleaned records.
-- Calculated totals.
-- Formatted Excel table.
-- Frozen headers.
-- Automatic column sizing.
-
-### Summary Dashboard
-
-Contains:
-
-- Total transactions.
-- Total sales.
-- Average sale.
-- Highest sale.
-- Lowest sale.
-
-### Visualization
-
-Automatically generates:
-
-- Sales by product chart.
+* Missing products.
+* Empty quantities.
+* Invalid prices.
+* Negative values.
+* Required spreadsheet fields.
 
 ---
 
-# Project Structure
+## Automated Excel Reports
 
+The generated report contains:
 
+## Processed Data Sheet
+
+Includes:
+
+* Cleaned records.
+* Calculated totals.
+* Formatted Excel table.
+* Frozen headers.
+* Automatic column sizing.
+
+---
+
+## Sales Dashboard
+
+Includes:
+
+* Total transactions.
+* Total sales.
+* Average sale value.
+* Highest sale.
+* Lowest sale.
+* Sales by product visualization.
+
+---
+
+# Architecture
+
+The project follows a modular Python architecture:
+
+```text
 excel-automation-tool/
 
 ├── src/
-│ ├── main.py
-│ ├── generate_sample_data.py
-│ ├── processor.py
-│ ├── validator.py
-│ ├── reporter.py
-│ └── utils.py
+│   ├── main.py
+│   ├── generate_sample_data.py
+│   ├── processor.py
+│   ├── validator.py
+│   ├── reporter.py
+│   └── utils.py
 │
 ├── tests/
-│ ├── test_validator.py
-│ └── test_processor.py
+│   ├── test_validator.py
+│   └── test_processor.py
 │
 ├── data/
-│ ├── input/
-│ └── output/
-│
-├── logs/
+│   ├── input/
+│   └── output/
 │
 ├── screenshots/
 │
+├── Dockerfile
+├── docker-compose.yml
+├── Makefile
 ├── requirements.txt
-├── README.md
-└── .gitignore
+└── README.md
+```
 
+---
+
+# Workflow
+
+The automation pipeline works as follows:
+
+```text
+Excel Input File
+
+        |
+        v
+
+Data Validation
+
+        |
+        v
+
+Data Processing
+
+        |
+        v
+
+Business Calculations
+
+        |
+        v
+
+Excel Report Generation
+
+        |
+        v
+
+Dashboard and Visualization
+```
 
 ---
 
 # Technologies
 
-- Python 3
-- Pandas
-- OpenPyXL
-- Pytest
-- Excel Automation
-- Data Processing
-- Logging
+* Python 3.12
+* Pandas
+* OpenPyXL
+* Pytest
+* Excel Automation
+* Data Processing
+* Data Validation
+* Logging
+* Docker
 
 ---
 
@@ -123,85 +191,99 @@ excel-automation-tool/
 
 Clone the repository:
 
+```bash
 git clone <repository-url>
 
 cd excel-automation-tool
+```
 
-Create virtual environment:
+Create a virtual environment:
 
+```bash
 python3 -m venv .venv
+```
 
 Activate environment:
 
+Linux:
+
+```bash
 source .venv/bin/activate
+```
 
 Install dependencies:
 
-pip install -r requirements.txt
+```bash
+pip install -r requirements-dev.txt
+```
+
+---
 
 # Generate Sample Data
 
-The project includes a script to generate sample Excel data.
+The project includes a script that generates a realistic Excel dataset.
 
 Run:
 
-python src/generate_sample_data.py
+```bash
+make sample
+```
 
 Generated file:
 
+```text
 data/input/sales.xlsx
+```
+
+The generated dataset contains sample business transactions with validation cases.
+
+---
 
 # Run Application
 
 Execute:
 
-python src/main.py \
+```bash
+make run
+```
+
+or manually:
+
+```bash
+python -m src.main \
 --input data/input/sales.xlsx \
 --output data/output/report.xlsx
+```
 
-Example:
+Generated report:
 
-python src/main.py --input sales.xlsx --output report.xlsx
-
-# Output
-
-The application generates:
-
+```text
 data/output/report.xlsx
+```
 
-The Excel file contains:
+---
 
-Processed Data
+# Docker Usage
 
-A cleaned dataset with:
+Build and run the application:
 
-Valid records.
-Calculated totals.
-Professional formatting.
-Summary Dashboard
+```bash
+make docker
+```
 
-Includes:
+The container will:
 
-Total transactions.
-Total sales.
-Average transaction value.
-Highest transaction.
-Lowest transaction.
-Sales Chart
+* Load the input Excel file.
+* Process the data.
+* Generate the final report.
 
-Automatically generated visualization showing sales by product.
+Output:
 
-# Logging
+```text
+data/output/report.xlsx
+```
 
-Application execution logs are stored in:
-
-logs/app.log
-
-Example:
-
-INFO | Reading Excel file
-INFO | Removed invalid rows
-INFO | Report generated successfully
+---
 
 # Testing
 
@@ -209,50 +291,95 @@ The project includes automated tests using Pytest.
 
 Run:
 
-pytest
+```bash
+make test
+```
 
 Expected result:
 
+```text
 2 passed
+```
 
 Tests validate:
 
-Data cleaning rules.
-Excel processing logic.
-Calculation accuracy.
+* Data cleaning rules.
+* Excel processing logic.
+* Calculation accuracy.
+
+---
+
+# Logging
+
+Application execution logs are stored in:
+
+```text
+logs/app.log
+```
+
+Example:
+
+```text
+INFO | Reading Excel file
+INFO | Removed invalid rows
+INFO | Report generated successfully
+```
+
+---
+
+# Screenshots
+
+The project includes screenshots showing:
+
+* Input Excel data.
+* Processed data.
+* Dashboard summary.
+* Generated charts.
+* Terminal execution.
+
+---
 
 # Use Cases
 
 This solution can be adapted for:
 
-Sales report automation.
-Inventory processing.
-Financial spreadsheets.
-Customer data cleaning.
-Business reporting workflows.
-Recurring Excel tasks.
+* Sales report automation.
+* Inventory processing.
+* Financial spreadsheets.
+* Customer data cleaning.
+* Business reporting workflows.
+* Recurring Excel processes.
+
+---
 
 # Future Improvements
 
 Possible extensions:
 
-Database integration.
-REST API service.
-Scheduled execution.
-Email report delivery.
-Cloud deployment.
-Web dashboard.
+* Database integration.
+* REST API integration.
+* Scheduled automation.
+* Email report delivery.
+* Cloud deployment.
+* Web dashboard.
+* AI-powered data analysis.
+
+---
 
 # Skills Demonstrated
-Python Automation
-Excel Automation
-Pandas
-OpenPyXL
-Data Processing
-Data Validation
-Report Generation
-Automated Testing
-Clean Code Practices
+
+* Python Automation
+* Excel Automation
+* Pandas
+* OpenPyXL
+* Data Processing
+* Data Validation
+* Report Generation
+* Automated Testing
+* Docker
+* Clean Code Practices
+
+---
 
 # Author
 
@@ -260,23 +387,8 @@ Python Automation Developer
 
 Specialized in:
 
-Python automation solutions.
-API integrations.
-Backend development.
-Data processing workflows.
-
----
-
-# Docker Usage
-
-Build the Docker image:
-
-docker compose build
-
-Run the application:
-
-docker compose up
-
-The generated report will be available at:
-
-data/output/report.xlsx
+* Python automation solutions.
+* API integrations.
+* Backend development.
+* Data processing workflows.
+* Business process automation.

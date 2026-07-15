@@ -74,15 +74,11 @@ def generate_report(df, output_file):
     for column_cells in worksheet.columns:
 
         length = max(
-            len(str(cell.value))
-            if cell.value is not None
-            else 0
+            len(str(cell.value)) if cell.value is not None else 0
             for cell in column_cells
         )
 
-        worksheet.column_dimensions[
-            column_cells[0].column_letter
-        ].width = length + 3
+        worksheet.column_dimensions[column_cells[0].column_letter].width = length + 3
 
     table = Table(
         displayName="SalesTable",
@@ -148,11 +144,7 @@ def generate_report(df, output_file):
     # Sales by Product
     # ==========================
 
-    sales = (
-        df.groupby("Product")["Total"]
-        .sum()
-        .reset_index()
-    )
+    sales = df.groupby("Product")["Total"].sum().reset_index()
 
     summary["D1"] = "Product"
     summary["E1"] = "Sales"
@@ -217,9 +209,7 @@ def generate_report(df, output_file):
 
     workbook.save(output_file)
 
-    logger.info(
-        f"Report generated: {output_file}"
-    )
+    logger.info(f"Report generated: {output_file}")
 
     print("\nReport generated successfully.")
     print(f"Output file: {output_file}")

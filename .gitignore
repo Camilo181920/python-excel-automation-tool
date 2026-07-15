@@ -1,33 +1,64 @@
+# ==========================
 # Python
+# ==========================
+
 __pycache__/
 *.py[cod]
 *$py.class
 
-# Virtual environment
+# ==========================
+# Virtual environments
+# ==========================
+
 .venv/
 venv/
 env/
 
+# ==========================
 # IDE
+# ==========================
+
 .vscode/
 .idea/
 
-# Tests
+# ==========================
+# Testing
+# ==========================
+
 .pytest_cache/
 .coverage
+htmlcov/
 
+# ==========================
 # Logs
-logs/*.log
+# ==========================
 
+logs/
+
+# ==========================
 # Generated files
-data/output/*.xlsx
+# ==========================
 
+data/output/
+
+# ==========================
+# Environment variables
+# ==========================
+
+.env
+.env.*
+
+# ==========================
 # Temporary files
-*.tmp
+# ==========================
 
-# OS
+*.tmp
+*.bak
+*.swp
+
+# ==========================
+# Operating System
+# ==========================
+
 .DS_Store
 Thumbs.db
-
-# Environment
-.env

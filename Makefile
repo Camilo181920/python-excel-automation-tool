@@ -1,7 +1,7 @@
-.PHONY: install run test sample docker
+.PHONY: install run test sample docker clean
 
 install:
-	pip install -r requirements.txt
+	pip install -r requirements-dev.txt
 
 sample:
 	python -m src.generate_sample_data
@@ -16,3 +16,7 @@ test:
 
 docker:
 	docker compose up --build
+
+clean:
+	rm -rf data/output/*
+	rm -rf logs/*

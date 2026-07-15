@@ -22,6 +22,6 @@ def process_excel(input_file):
 
     logger.info(f"Removed {removed_rows} invalid rows")
 
-    df["Total"] = df["Quantity"] * df["Price"]
+    df["Total"] = df["Quantity"].astype(float).mul(df["Price"].astype(float))
 
     return df

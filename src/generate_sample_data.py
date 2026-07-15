@@ -32,17 +32,13 @@ def create_sample_data():
 
         base_price = products[product]
 
-        price = round(
-            base_price * random.uniform(0.9, 1.1),
-            2
-        )
+        price = round(base_price * random.uniform(0.9, 1.1), 2)
 
         quantity = random.randint(1, 8)
 
-        date = (
-            start_date +
-            timedelta(days=random.randint(0, 180))
-        ).strftime("%Y-%m-%d")
+        date = (start_date + timedelta(days=random.randint(0, 180))).strftime(
+            "%Y-%m-%d"
+        )
 
         data.append(
             {
@@ -85,17 +81,11 @@ def create_sample_data():
 
     df = pd.DataFrame(data)
 
-    os.makedirs(
-        "data/input",
-        exist_ok=True
-    )
+    os.makedirs("data/input", exist_ok=True)
 
     output_file = "data/input/sales.xlsx"
 
-    df.to_excel(
-        output_file,
-        index=False
-    )
+    df.to_excel(output_file, index=False)
 
     print(f"Sample file created: {output_file}")
     print(f"Generated records: {len(df)}")
