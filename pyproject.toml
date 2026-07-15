@@ -1,0 +1,21 @@
+[project]
+name = "excel-automation-tool"
+version = "1.0.0"
+description = "Professional Excel automation tool built with Python."
+requires-python = ">=3.10"
+
+[tool.pytest.ini_options]
+pythonpath = [
+    "."
+]
+testpaths = [
+    "tests"
+]
+
+[tool.black]
+line-length = 88
+target-version = ["py312"]
+
+[tool.isort]
+profile = "black"
+line_length = 88

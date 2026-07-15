@@ -1,0 +1,25 @@
+services:
+
+  excel-automation:
+
+    build: .
+
+    container_name: excel-automation-tool
+
+    environment:
+      PYTHONPATH: /app
+
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+
+    command:
+      [
+        "python",
+        "-m",
+        "src.main",
+        "--input",
+        "data/input/sales.xlsx",
+        "--output",
+        "data/output/report.xlsx"
+      ]
